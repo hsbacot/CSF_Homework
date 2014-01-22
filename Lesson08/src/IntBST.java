@@ -1,10 +1,15 @@
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+import java.util.LinkedList;
+
 
 import java.util.LinkedList;
 
 
 public class IntBST {
+<<<<<<< HEAD
     private IntBSTNode rootNode;
+=======
+    private IntNode rootNode;
+>>>>>>> 9ce7065aaadd2dee8eb5762a4250211953caba7a
 
     public String bfsRepresentation() {
         // TODO: Return a string representation of a breadth-first search of this tree.
@@ -20,7 +25,28 @@ public class IntBST {
             q.add(n.getRightNode());
         }
 
+<<<<<<< HEAD
 //       throw new NotImplementedException();
+=======
+        // Sample solution, remove prior to class
+        StringBuilder stringBuilder = new StringBuilder();
+
+        LinkedList<IntNode> queue = new LinkedList<IntNode>();
+        if (rootNode != null) {
+            queue.add(rootNode);
+        }
+
+        while(!queue.isEmpty()) {
+            IntNode node = queue.remove();
+            stringBuilder.append(node.getValue() + " ");
+
+            if (node.getLeftChild() != null)
+                queue.add(node.getLeftChild());
+            if (node.getRightChild() != null)
+                queue.add(node.getRightChild());
+        }
+        return stringBuilder.toString().trim();
+>>>>>>> 9ce7065aaadd2dee8eb5762a4250211953caba7a
     }
 
     public void insertValue(int value) {
@@ -45,20 +71,50 @@ public class IntBST {
         }
 
 
+<<<<<<< HEAD
 //       throw new NotImplementedException();
+=======
+        // Sample soln, remove prior to class
+
+        if (rootNode == null) {
+            rootNode = new IntNode(value);
+        }
+        else {
+            IntNode currentNode = rootNode;
+
+            while (currentNode.getValue() != value) {
+                if (value > currentNode.getValue()) { // Right child path
+                    if (currentNode.getRightChild() == null) {
+                        currentNode.setRightChild(new IntNode(value));
+                    }
+                    currentNode = currentNode.getRightChild();
+                }
+                else { // Left child path
+                    if (currentNode.getLeftChild() == null) {
+                        currentNode.setLeftChild(new IntNode(value));
+                    }
+                    currentNode = currentNode.getLeftChild();
+                }
+            }
+        }
+>>>>>>> 9ce7065aaadd2dee8eb5762a4250211953caba7a
     }
 
     public boolean search(int value) {
         // TODO: Return whether the tree contains a given value
-        throw new NotImplementedException();
-    }
 
-    public void remove(int value) {
-        // TODO: Optional Challenge question
-        // To remove, first examine the find the node, then:
-        // 1) Node N has no children? Just remove N
-        // 2) Node N has one child? Just remove N and replace with the child
-        // 3) Node N has two children? A little harder. Either take the in-order successor or predecessor R, swap the values of N and R, then delete R
-        throw new NotImplementedException();
+        // Sample soln, remove prior to class
+        IntNode currentNode = rootNode;
+
+        while(currentNode != null && (currentNode.getValue() != value)) {
+            if (value > currentNode.getValue()) { // Continue down the right child path
+                currentNode = currentNode.getRightChild();
+            }
+            else { // Continue down the left child path
+                currentNode = currentNode.getLeftChild();
+            }
+        }
+        // If the current node exists and its value is equal to the input, return true, else return false
+        return currentNode != null && (currentNode.getValue() == value);
     }
 }

@@ -19,22 +19,22 @@ public class Lab4Samples {
     }
 
     public static void bst() {
-        IntBST bst = new IntBST();
-
-        while(true) {
-            Scanner consoleScanner = new Scanner(System.in);
-            System.out.print("\nType 'insert {number}' or 'find {number} to insert/find into the BST: ");
-            String command = consoleScanner.next();
-            int value = consoleScanner.nextInt();
-
-            if (command.equals("insert")) {
-                bst.insertValue(value);
-                bst.bfsRepresentation();
-            }
-            else if (command.equals("find")) {
-                System.out.println("It is " + bst.search(value) + " that " + value + " exists in the BST.");
-            }
-        }
+//        IntBST bst = new IntBST();
+//
+//        while(true) {
+//            Scanner consoleScanner = new Scanner(System.in);
+//            System.out.print("\nType 'insert {number}' or 'find {number} to insert/find into the BST: ");
+//            String command = consoleScanner.next();
+//            int value = consoleScanner.nextInt();
+//
+//            if (command.equals("insert")) {
+//                bst.insertValue(value);
+//                bst.bfsRepresentation();
+//            }
+//            else if (command.equals("find")) {
+//                System.out.println("It is " + bst.search(value) + " that " + value + " exists in the BST.");
+//            }
+//        }
     }
 
     public static void maxHeap() {

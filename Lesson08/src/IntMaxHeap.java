@@ -23,7 +23,19 @@ public class IntMaxHeap {
             //  E.g. If a child node is at index 10 in the array, 
             //  its parent node is at position (10-1)/2, which is 4 (integer division rounds down)
 
-            throw new UnsupportedOperationException("Not implemented!");
+            int nodePos = array.size() - 1;
+            int parentPos = parentIndex(nodePos);
+
+            while (array.get(nodePos) > array.get(parentPos)) {
+
+                array.set(parentPos, array.get(nodePos));
+                array.set(nodePos, array.get(parentPos));
+
+                nodePos = parentIndex(nodePos);
+                parentPos = parentIndex(nodePos);
+            }
+
+//            throw new UnsupportedOperationException("Not implemented!");
         }
     }
 
@@ -37,5 +49,10 @@ public class IntMaxHeap {
             stringBuilder.append(array.get(i).intValue() + " ");
         }
         return stringBuilder.toString().trim();
+    }
+
+    public int parentIndex(int nodePos) {
+        int val = (nodePos - 1)/2;
+        return val;
     }
 }
