@@ -5,11 +5,8 @@ import java.util.LinkedList;
 
 
 public class IntBST {
-<<<<<<< HEAD
     private IntBSTNode rootNode;
-=======
-    private IntNode rootNode;
->>>>>>> 9ce7065aaadd2dee8eb5762a4250211953caba7a
+//    private IntNode rootNode;
 
     public String bfsRepresentation() {
         // TODO: Return a string representation of a breadth-first search of this tree.
@@ -25,9 +22,7 @@ public class IntBST {
             q.add(n.getRightNode());
         }
 
-<<<<<<< HEAD
 //       throw new NotImplementedException();
-=======
         // Sample solution, remove prior to class
         StringBuilder stringBuilder = new StringBuilder();
 
@@ -46,7 +41,6 @@ public class IntBST {
                 queue.add(node.getRightChild());
         }
         return stringBuilder.toString().trim();
->>>>>>> 9ce7065aaadd2dee8eb5762a4250211953caba7a
     }
 
     public void insertValue(int value) {
@@ -97,7 +91,6 @@ public class IntBST {
                 }
             }
         }
->>>>>>> 9ce7065aaadd2dee8eb5762a4250211953caba7a
     }
 
     public boolean search(int value) {
