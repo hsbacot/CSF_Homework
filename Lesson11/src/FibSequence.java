@@ -11,7 +11,13 @@ public class FibSequence {
      */
     int fibNumber(int n) {
         // TODO: Fill out to make FibSequenceTest pass
-
-        return 0;
+        if (n == 0) {
+            return 0;
+        } else if (n == 2) {
+            return 1;
+        } else {
+            int fibNumber = fibNumber(n-1) + fibNumber(n -2);
+            return fibNumber;
+        }
     }
 }

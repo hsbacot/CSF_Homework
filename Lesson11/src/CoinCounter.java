@@ -1,6 +1,9 @@
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 
 public class CoinCounter {
     public static int CHANGE_NOT_POSSIBLE_FLAG = Integer.MAX_VALUE;
@@ -89,7 +92,31 @@ public class CoinCounter {
          - What are your base cases?
          - What is your recursive step?
          */
+        if (totalSum == 0) {
+            return 0;
+        } else if ( Arrays.binarySearch( this.denominations, totalSum ) == totalSum) {
+            return 1;
+        } else if ( this.denominations[0] > totalSum) {
+            return CHANGE_NOT_POSSIBLE_FLAG;
+        } else {
+            int[] coinTotals = new int[totalSum -1];
+            for (int i = this.denominations.length - 1; i >= 0; i--) {
+                ArrayList<Integer> coinCompare = new ArrayList<Integer>();
+                if (denominations[i] < totalSum) {
+                    int coinTotal = (coinTotals[totalSum - denominations[i]]) + 1;
+                    coinCompare.add(coinTotal);
 
-        throw new NotImplementedException();
+                    if (i == 0) {
+                        Collections.sort(coinCompare);
+                        int lowest = coinCompare.get(0);
+
+                        return recursiveNumberOfCoinsRequired(lowest);
+                    }
+                }
+            }
+        }
+
+//        throw new NotImplementedException();
+        return 1;
     }
 }
