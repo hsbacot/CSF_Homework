@@ -118,5 +118,6 @@ public class CoinCounter {
 
 //        throw new NotImplementedException();
         return 1;
+
     }
 }
