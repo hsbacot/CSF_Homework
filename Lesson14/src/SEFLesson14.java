@@ -11,7 +11,7 @@ public class SEFLesson14 {
         StopWatch stopWatch = new LoggingStopWatch("millions");
 
         asyncMillions();
-        //syncMillions();
+//        syncMillions();
 
         System.out.flush();
         stopWatch.stop();

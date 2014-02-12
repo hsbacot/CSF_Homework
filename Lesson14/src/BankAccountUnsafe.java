@@ -14,7 +14,9 @@ public class BankAccountUnsafe {
 	}
 	
 	public static void Transfer(BankAccountUnsafe fromAccount, BankAccountUnsafe toAccount, float amount) {
-		synchronized(fromAccount) {
+
+        // Order accounts & lock in a specific order
+        synchronized(fromAccount) {
 			synchronized(toAccount) {
 				fromAccount.withdraw(amount);
 				toAccount.deposit(amount);

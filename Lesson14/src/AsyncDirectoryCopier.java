@@ -1,4 +1,6 @@
 import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /*
  * Your assignment: The DirectoryCopier class will copy all the files in one
@@ -8,6 +10,8 @@ import java.io.*;
 public class AsyncDirectoryCopier {
     // Sample soln
     private static final int BUFFER_SIZE = 1024;
+
+    // directory paths in constructor
 
     /**
      * Copies one directory to another directory
@@ -20,5 +24,47 @@ public class AsyncDirectoryCopier {
      */
     public void copyDirectory(File sourceDir, File destinationDir) throws IOException {
         // TODO: Fill in
+        int NUMBER_OF_FILES = 100;
+
+        List<Thread> files = new ArrayList<>(NUMBER_OF_FILES);
+        File[] moveFiles = new File[];
+
+        for(int i = 0; i < NUMBER_OF_FILES; i++) {
+            Thread worker = new Thread(copyFile(moveFiles[i], ));
+        }
+        Thread
+    }
+
+    /**
+     * Copies a file from one place to another.
+     * @param source Source file. Must be an actual file.
+     * @param destination Destination file.
+     * @throws IOException An exception raised while copying the file.
+     */
+    private void copyFile(File source, File destination) throws IOException {
+        if (!source.isFile())
+            throw new IllegalArgumentException("Input file must be an actual file!");
+
+        if (!destination.exists())
+            destination.createNewFile();
+        InputStream in = null;
+        OutputStream out = null;
+
+        try {
+            in = new FileInputStream(source);
+            out = new FileOutputStream(destination);
+
+            byte[] buf = new byte[BUFFER_SIZE];
+            int len;
+            while ((len = in.read(buf)) > 0) {
+                out.write(buf, 0, len);
+            }
+        }
+        finally {
+            if (in != null)
+                in.close();
+            if (out != null)
+                out.close();
+        }
     }
 }
